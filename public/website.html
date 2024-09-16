@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HODLINFO Clone</title>
+    <style>
+        /* General Page Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0a0f1e;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 85%;
+            margin: auto;
+            padding-top: 20px;
+        }
+
+        /* Header Styling */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 2em;
+            font-weight: bold;
+            color: #00d1ff;
+        }
+
+        .currency-selector button {
+            background-color: #242f48;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .currency-selector button:hover {
+            background-color: #2a344f;
+        }
+
+        /* Price Information Styling */
+        .price-info {
+            text-align: center;
+            color: #fff;
+        }
+
+        .price-info span {
+            font-size: 18px;
+            color: #a3a7b0;
+        }
+
+        .price-info h1 {
+            font-size: 3em;
+            margin: 10px 0;
+        }
+
+        /* Time Info Styling */
+        .time-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            color: #a3a7b0;
+        }
+
+        .time-info div {
+            font-size: 14px;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        table th, table td {
+            padding: 12px 15px;
+            text-align: left;
+        }
+
+        thead {
+            background-color: #242f48;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #a3a7b0;
+        }
+
+        tbody tr {
+            background-color: #1c2336;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #242f48;
+        }
+
+        tbody tr td {
+            border-bottom: 1px solid #2a344f;
+        }
+
+        tbody tr td:last-child {
+            color: #ff6262; /* For the savings column */
+        }
+
+        /* Footer Actions */
+        footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        footer button {
+            background-color: #00d1ff;
+            color: #000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        footer button:hover {
+            background-color: #00a6cc;
+        }
+
+        /* Toggle Switch for Telegram Connection */
+        .telegram-connect {
+            display: flex;
+            align-items: center;
+        }
+
+        .telegram-connect button {
+            background-color: #00d1ff;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-size: 14px;
+            color: black;
+            cursor: pointer;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .telegram-connect button:hover {
+            background-color: #00a6cc;
+        }
+
+        .toggle-switch {
+            background-color: #242f48;
+            border-radius: 20px;
+            width: 40px;
+            height: 20px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .toggle-switch:before {
+            content: "";
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 16px;
+            height: 16px;
+            background-color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-switch.active:before {
+            left: 22px;
+            background-color: #00d1ff;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">HODLINFO</div>
+            <div class="currency-selector">
+                <button>INR</button>
+                <button>BTC</button>
+                <button>Buy BTC</button>
+            </div>
+            <div class="price-info">
+                <span>Best Price to Trade</span>
+                <h1 id="price">₹ 26,56,110</h1>
+            </div>
+            <div class="time-info">
+                <div>0.1% (5 Mins)</div>
+                <div>0.96% (1 Hour)</div>
+            </div>
+        </header>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Platform</th>
+                    <th>Last Traded Price</th>
+                    <th>Buy / Sell Price</th>
+                    <th>Difference</th>
+                    <th>Savings</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>WazirX</td>
+                    <td>₹ 25,72,612</td>
+                    <td>₹ 25,72,610 / ₹ 25,72,612</td>
+                    <td style="color: #ff6262;">-3.14%</td>
+                    <td>₹ 83,498</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Bitbns</td>
+                    <td>₹ 28,83,906</td>
+                    <td>₹ 28,55,164 / ₹ 28,28,157</td>
+                    <td style="color: #3fd371;">+8.58%</td>
+                    <td>₹ 2,27,796</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Colodax</td>
+                    <td>₹ 25,46,035</td>
+                    <td>₹ 25,33,304 / ₹ 28,51,559</td>
+                    <td style="color: #ff6262;">-4.14%</td>
+                    <td>₹ 1,10,074</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Zebpay</td>
+                    <td>₹ 26,50,000</td>
+                    <td>₹ 26,49,999 / ₹ 26,21,000</td>
+                    <td style="color: #ff6262;">-0.23%</td>
+                    <td>₹ 6,110</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <footer>
+            <button>Add HODLINFO to Home Screen</button>
+        </footer>
+
+        <div class="telegram-connect">
+            <button>Connect Telegram</button>
+            <div class="toggle-switch"></div>
+        </div>
+    </div>
+
+    <script>
+        async function fetchPrices() {
+            const response = await fetch('http://localhost:3000/api/prices');
+            const data = await response.json();
+
+            // Update the price on the page
+            document.getElementById('price').innerText = `₹ ${data.bitcoin.inr.toLocaleString()}`;
+        }
+
+        // Fetch prices when the page loads
+        window.onload = fetchPrices;
+
+        // Toggle switch functionality
+        document.querySelector('.toggle-switch').addEventListener('click', function() {
+            this.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
